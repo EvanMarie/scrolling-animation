@@ -1,5 +1,6 @@
-import { cssBundleHref } from "@remix-run/css-bundle";
+import { ChakraProvider } from "@chakra-ui/react";
 import type { LinksFunction } from "@remix-run/node";
+import styles from "./style/global.css";
 import {
   Links,
   LiveReload,
@@ -8,10 +9,11 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+import CustomTheme from "./style/customTheme";
+import NavBar from "./components/navbar";
+import EntirePage from "./components/entirePage";
 
-export const links: LinksFunction = () => [
-  ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
-];
+export const links: LinksFunction = () => [{ rel: "stylesheet", href: styles }];
 
 export default function App() {
   return (
@@ -23,7 +25,12 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Outlet />
+        <ChakraProvider theme={CustomTheme}>
+          <EntirePage>
+            <NavBar />
+            <Outlet />
+          </EntirePage>
+        </ChakraProvider>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
