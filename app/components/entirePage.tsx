@@ -1,4 +1,5 @@
 import { StackProps, VStack } from "@chakra-ui/react";
+import { useLocation } from "@remix-run/react";
 import { scrollBarStyles } from "~/style/customTheme";
 
 interface EntirePageProps extends StackProps {
@@ -6,6 +7,8 @@ interface EntirePageProps extends StackProps {
 }
 
 export default function EntirePage({ children }: EntirePageProps) {
+  const pathname = useLocation().pathname;
+  const isExperiment = pathname === "/experiment";
   return (
     <VStack
       w="100vw"
@@ -18,7 +21,7 @@ export default function EntirePage({ children }: EntirePageProps) {
       spacing={0}
       pt="5vh"
       pb="25vh"
-      sx={scrollBarStyles}
+      sx={isExperiment ? {} : scrollBarStyles}
     >
       {children}
     </VStack>

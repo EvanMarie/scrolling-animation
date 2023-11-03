@@ -1,6 +1,10 @@
-import { extendTheme, withDefaultColorScheme } from "@chakra-ui/react";
+import {
+  extendTheme,
+  withDefaultColorScheme,
+  withDefaultVariant,
+} from "@chakra-ui/react";
 
-export const radius = "sm";
+export const radius = "md";
 export const shadow = "0px 0px 10px rgba(0,0,0,0.7)";
 export const mainShadow = "2px 2px 8px rgba(0, 0, 0, 0.9)";
 export const subtleShadow = "rgba(0, 0, 0, 0.07) 0px 1px 2px";
@@ -55,6 +59,10 @@ export const sz = {
 const CustomTheme = extendTheme(
   withDefaultColorScheme({
     colorScheme: "orange",
+  }),
+  withDefaultVariant({
+    variant: "filled",
+    components: ["Input", "Button", "Select", "Checkbox", "Radio"],
   }),
   {
     config: {
@@ -120,6 +128,50 @@ const CustomTheme = extendTheme(
             transition: customTransition,
           },
         },
+
+        Button: {
+          variants: {
+            filled: {
+              bg: colors.deepRed,
+              color: colors.creme,
+              shadow: mainShadow,
+              fontWeight: "500",
+              _hover: {
+                bg: colors.lightOrange,
+                color: colors.creme,
+                shadow: largeShadow,
+              },
+              _focus: {
+                bg: colors.lightOrange,
+                color: colors.creme,
+                shadow: largeShadow,
+              },
+            },
+          },
+        },
+
+        Input: {
+          variants: {
+            filled: {
+              field: {
+                bg: colors.deepRed,
+                color: colors.creme,
+                shadow: mainShadow,
+                fontWeight: "500",
+                _focus: {
+                  borderColor: colors.lightOrange,
+                  bg: colors.deepRed,
+                  color: colors.creme,
+                },
+                _hover: {
+                  borderColor: colors.lightOrange,
+                  bg: colors.deepRed,
+                  color: colors.creme,
+                },
+              },
+            },
+          },
+        },
       },
     },
   }
@@ -150,21 +202,37 @@ export const scrollBarStyles = {
 export const InputStyles = {
   variant: "filled",
   rounded: radius,
-  bg: "gray.900",
-  w: "100%",
-  maxW: "600px",
-  color: "gray.50",
-  shadow: shadow,
-  borderColor: "gray.600",
-  focusBorderColor: "teal.300",
+  bg: colors.deepRed,
+  maxW: "500px",
+  color: colors.creme,
+  shadow: mainShadow,
+  borderColor: colors.mediumOrange,
+  focusBorderColor: colors.lightOrange,
   _hover: {
-    bg: "gray.800",
-    borderColor: "teal.300",
+    borderColor: colors.lightOrange,
+    bg: colors.deepRed,
+    color: colors.creme,
     shadow: largeShadow,
   },
   _focus: {
-    bg: "gray.800",
-    borderColor: "teal.300",
+    bg: colors.deepRed,
+    borderColor: colors.lightOrange,
+    focusBorderColor: colors.lightOrange,
   },
   transition: "all 0.3s ease-in-out",
+};
+
+export const ButtonStyles = {
+  bg: colors.blue,
+  color: colors.creme,
+  shadow: shadow3D,
+  textShadow: largeTextShadow,
+  fontWeight: "500",
+  rounded: radius,
+  _hover: {
+    bg: colors.lightBlue,
+    color: colors.darkBurgundy,
+    shadow: lightTextShadow,
+    fontWeight: "600",
+  },
 };

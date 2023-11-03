@@ -32,6 +32,7 @@ export default function NavBar() {
       <NavButton label="Home" link="/" />
       <NavButton label="Cards" link="/animated-cards" />
       <NavButton label="More" link="/more" />
+      <NavButton label="Play" link="/experiment" />
       <NavButton label="Theme" link="/theme-examples" />
     </HStack>
   );
