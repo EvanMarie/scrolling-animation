@@ -30,9 +30,9 @@ interface CustomTooltipProps {
 export default function CustomTooltip({
   label,
   bg = colors.lightBlue,
-  color = colors.creme,
-  w = "350px",
-  h = "350px",
+  color = colors.darkBurgundy,
+  w = "150px",
+  h = "fit-content",
   fontSize = "1rem",
   children,
   placement = "top",
@@ -104,10 +104,9 @@ export default function CustomTooltip({
         <Flex
           {...placementStyles}
           justify="center"
-          px="8px"
-          py="4px"
+          p={2}
           zIndex="tooltip"
-          lineHeight="1rem"
+          lineHeight="1.2" // Line height can be adjusted for better readability if text wraps.
           w={w}
           h={h}
           bg={bg}
@@ -118,7 +117,7 @@ export default function CustomTooltip({
           position="absolute"
           shadow="2px 2px 5px rgba(0,0,0,0.5)"
           textShadow="none"
-          whiteSpace="nowrap"
+          whiteSpace="normal" // Updated from 'nowrap' to 'normal'
         >
           {label}
         </Flex>

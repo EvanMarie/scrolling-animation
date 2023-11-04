@@ -2,6 +2,10 @@ import { Flex } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
 import { colors, shadow3D, sz } from "~/style/customTheme";
+export type CustomEasing =
+  | [number, number, number, number]
+  | ((t: number) => number)
+  | string;
 
 export interface AnimationContainerProps {
   offscreenY?: number;
@@ -19,6 +23,7 @@ export interface AnimationContainerProps {
   imageWidth?: string;
   imageHeight?: string;
   children?: React.ReactNode;
+  easing?: CustomEasing;
   delay?: number;
   damping?: number; // affects how many times the element bounces / oscillates
   stiffness?: number; // affects how immediately it snaps to the end position
@@ -30,6 +35,8 @@ export interface AnimationContainerProps {
   w?: string;
   h?: string;
   animationKey?: number; // added prop for re-triggering animations
+  px?: number | string;
+  py?: number | string;
 }
 
 export default function AnimationContainer({
@@ -56,7 +63,10 @@ export default function AnimationContainer({
   w = "fit-content",
   h = "fit-content",
   children,
+  easing = "easeInOut",
   animationKey = 0, // using the new prop here
+  px = 4,
+  py = 2,
 }: AnimationContainerProps) {
   const itemVariants: Variants = {
     initial: {
@@ -79,6 +89,7 @@ export default function AnimationContainer({
         bounce: transitionBounce,
         duration: transitionDuration,
         delay: delay,
+        ease: easing,
       },
     },
   };
@@ -97,8 +108,8 @@ export default function AnimationContainer({
       color={color}
       rounded={rounded}
       shadow={shadow}
-      px={4}
-      py={2}
+      px={px}
+      py={py}
       fontWeight={500}
       fontSize="lg"
       w={w}

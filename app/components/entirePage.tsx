@@ -14,13 +14,14 @@ export default function EntirePage({ children }: EntirePageProps) {
       w="100vw"
       h="100vh"
       overflowX="hidden"
+      // overflowY={isExperiment ? "hidden" : "auto"}
       overflowY="auto"
       direction="column"
       align="center"
       position="relative"
       spacing={0}
       pt="5vh"
-      pb="25vh"
+      pb={isExperiment ? "1vh" : "25vh"}
       sx={isExperiment ? {} : scrollBarStyles}
     >
       {children}
