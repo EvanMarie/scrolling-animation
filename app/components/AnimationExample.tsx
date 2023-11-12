@@ -24,6 +24,7 @@ export default function AnimationExample({
     >
       <HStack
         w={{ base: "90%", md: "50%" }}
+        h="100px"
         px={2}
         spacing={4}
         justify={{ base: "space-between", md: "start" }}
@@ -41,13 +42,13 @@ export default function AnimationExample({
           </Button>
         </Flex>{" "}
       </HStack>
-      {!offscreen ? (
-        <Flex w={{ base: "100%", md: "50%" }} justify="center">
+      <Flex w={{ base: "100%", md: "50%" }} justify="center" h="100px">
+        {!offscreen ? (
           <AnimationContainer {...props} w="350px">
             {label}
           </AnimationContainer>
-        </Flex>
-      ) : null}
+        ) : null}{" "}
+      </Flex>
     </Stack>
   );
 }

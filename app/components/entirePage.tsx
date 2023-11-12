@@ -1,4 +1,4 @@
-import { StackProps, VStack } from "@chakra-ui/react";
+import { type StackProps, VStack } from "@chakra-ui/react";
 import { useLocation } from "@remix-run/react";
 import { scrollBarStyles } from "~/style/customTheme";
 

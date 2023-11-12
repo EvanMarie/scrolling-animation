@@ -30,6 +30,7 @@ export default function NavBar() {
       spacing={8}
     >
       <NavButton label="Home" link="/" />
+      <NavButton label="Scroll" link="/scrolly" />
       <NavButton label="Cards" link="/animated-cards" />
       <NavButton label="More" link="/more" />
       <NavButton label="Play" link="/experiment" />
