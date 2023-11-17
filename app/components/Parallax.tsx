@@ -1,9 +1,25 @@
-import { VStack } from "@chakra-ui/react";
+import { type MotionValue, motion } from "framer-motion";
 
-export function ParallaxColumn({ children }: { children: React.ReactNode }) {
+export function ParallaxColumn({
+  children,
+  y,
+}: {
+  children: React.ReactNode;
+  y: MotionValue<number>;
+}) {
   return (
-    <VStack w="25%" h="100%" spacing="2vw">
+    <motion.div
+      style={{
+        y,
+        display: "flex",
+        flexDirection: "column",
+        width: "25%",
+        height: "100%",
+        gap: "2vw",
+        minWidth: "250px",
+      }}
+    >
       {children}
-    </VStack>
+    </motion.div>
   );
 }

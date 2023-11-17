@@ -1,0 +1,8 @@
+.column {
+  display: "flex";
+  flex-direction: "column";
+  width: "25%";
+  height: "100%";
+  gap: "2vw";
+  min-width: "250px";
+}
